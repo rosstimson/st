@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "GohuFont:pixelsize=14:antialias=false:autohint=false";
+static int borderpx = 1;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -82,33 +82,36 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-/* Terminal colors (16 first used in escape sequence) */
+/* Terminal colors (16 first used in escape sequence)
+ *
+ * Custom colours based on base16-ashes
+ */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#1c2023",
+	"#c7ae95",
+	"#95c7ae",
+	"#aec795",
+	"#ae95c7",
+	"#c795ae",
+	"#95aec7",
+	"#c7ccd1",
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	"#747c84",
+	"#c7c795",
+	"#393f45",
+	"#565e65",
+	"#adb3ba",
+	"#dfe2e5",
+	"#c79595",
+	"#f3f4f5",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+	[256] = "#1c2023", /* 256: background */
+	[257] = "#c7ccd1", /* 257: foreground */
 };
 
 
@@ -116,10 +119,10 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-static unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 257;
+static unsigned int defaultrcs = 256;
 
 /*
  * Default shape of cursor
